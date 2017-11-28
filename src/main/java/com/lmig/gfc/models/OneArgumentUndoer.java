@@ -2,21 +2,21 @@ package com.lmig.gfc.models;
 
 import java.util.Stack;
 
-public class OneArgumentUndoer {
-	
-private double first; 
+public class OneArgumentUndoer implements Undoer {
 
-public OneArgumentUndoer(double first) {
-	this.first = first;
-}
+	private double first;
 
-public void undo(Stack<Double> stack) {
-	stack.pop();
-	parentUndo(stack);
-}
-protected void parentUndo(Stack<Double> stack) {
-	stack.push(first);
-}
-}
+	public OneArgumentUndoer(double first) {
+		this.first = first;
+	}
 
-	
+	@Override
+	public void undo(Stack<Double> stack) {
+		stack.pop();
+		parentUndo(stack);
+	}
+
+	protected void parentUndo(Stack<Double> stack) {
+		stack.push(first);
+	}
+}

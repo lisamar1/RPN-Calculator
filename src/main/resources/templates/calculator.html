@@ -9,6 +9,7 @@
 <body>
 	<h1>The best calculator, the RPN calculator</h1>
 
+
 	<div class="form-holder">
 		<form method="post" action="/enter">
 			<div class="form-input">
@@ -18,32 +19,62 @@
 				<button>Enter</button>
 			</div>
 		</form>
+
+		{{#hasOneOrMoreNumbers}}
 		<div>
 			<form method="post" action="/abs">
 				<button>abs</button>
 			</form>
 		</div>
-	
+		{{/hasOneOrMoreNumbers}} 
+		
 		{{#hasTwoOrMoreNumbers}}
 		<div>
 			<form method="post" action="/add">
 				<button>+</button>
 			</form>
 		</div>
-	
+
+		<div>
+			<form method="post" action="/divide">
+				<button>/</button>
+			</form>
+		</div>
 		<div>
 			<form method="post" action="/minus">
 				<button>-</button>
-	
+
 			</form>
 		</div>
-	
-		{{/hasTwoOrMoreNumbers}}
+
+		<div>
+			<form method="post" action="/multiply">
+				<button>*</button>
+
+			</form>
+		</div>
+
+		<div>
+			<form method="post" action="/exponent">
+				<button>^</button>
+
+			</form>
+		</div>
+
+		{{/hasTwoOrMoreNumbers}} 
 		
 		{{#hasUndoer}}
 		<div>
 			<form method="post" action="/undo">
 				<button>Undo</</button>
+			</form>
+		</div>
+		{{/hasUndoer}}
+		
+		{{#hasUndoer}}
+		<div>
+			<form method="post" action="/redo">
+				<button>Redo</</button>
 			</form>
 		</div>
 		{{/hasUndoer}}
@@ -53,8 +84,7 @@
 		<h1 class="stack-title">Stack</h1>
 		<ol class="stack">
 			{{#stack}}
-			<li>{{.}}</li>
-			 {{/stack}}
+			<li>{{.}}</li> {{/stack}}
 		</ol>
 	</div>
 </body>
